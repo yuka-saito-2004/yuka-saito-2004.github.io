@@ -23,7 +23,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-/*   font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif; */
   font-family: "M PLUS 1p", sans-serif;
   font-size: 16px;
   line-height: 1.85;
@@ -35,11 +34,18 @@ body {
 a {
   color: var(--accent-deep);
   text-decoration: none;
+  transition: color 180ms ease, opacity 180ms ease;
 }
 
-a:hover {
+a:hover,
+ a:focus-visible {
   color: #65748f;
   text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent-deep);
+  outline-offset: 3px;
 }
 
 .container {
@@ -70,13 +76,6 @@ h1 span {
   font-weight: inherit;
 }
 
-.lead {
-  margin: 14px 0 0;
-  max-width: 700px;
-  color: var(--muted);
-  font-size: 1.02rem;
-}
-
 .hero-links {
   margin-top: 18px;
   display: flex;
@@ -85,13 +84,25 @@ h1 span {
 }
 
 .hero-links a {
-  display: inline;
+  display: inline-flex;
+  align-items: center;
   padding: 0;
   border: none;
   background: none;
   color: var(--accent-deep);
   font-size: 1rem;
   font-weight: 600;
+}
+
+.pub-badge,
+.hero-links a {
+  transition: color 180ms ease, opacity 180ms ease;
+}
+
+.pub-badge:focus-visible,
+.nav-inner a:focus-visible {
+  outline: 2px solid var(--accent-deep);
+  outline-offset: 4px;
 }
 
 .site-nav {
@@ -107,6 +118,7 @@ h1 span {
   flex-wrap: wrap;
   gap: 18px;
   padding: 12px 0;
+  justify-content: flex-start;
 }
 
 .nav-inner a {
@@ -218,16 +230,17 @@ strong {
 }
 
 .pub-item {
-  padding: 10px 0 16px;
+  padding: 12px 0 14px;
+  margin: 0;
+  background: transparent;
   border: none;
   border-bottom: 1px dashed var(--line);
   border-radius: 0;
-  background: transparent;
 }
 
 .pub-item:last-child {
   border-bottom: none;
-  padding-bottom: 0;
+  padding-bottom: 8px;
 }
 
 .pub-title {
@@ -247,6 +260,63 @@ strong {
   font-size: 0.96rem;
 }
 
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.pub-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: var(--accent-deep);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.pub-badge:hover,
+.pub-badge:focus-visible {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.pub-badge--paper {
+  background: var(--accent-deep);
+  color: #ffffff;
+}
+
+.pub-title-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.pub-title-row .pub-title {
+  margin: 0;
+}
+
+.pub-label-new {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid #e88c8c;
+  background: transparent;
+  color: #e88c8c;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
 .clean-list,
 .contact-list {
   margin: 0;
@@ -260,68 +330,21 @@ strong {
 
 .simple-list {
   margin: 0;
-  padding: 0;
+  padding-left: 1.2rem;
 }
 
 .simple-item {
-  padding: 10px 14px;
-  background: var(--beige);
-  border-left: 4px solid var(--accent-deep);
-  border-radius: 10px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 8px;
 }
 
 .footer {
   padding: 22px 0 36px;
   color: var(--muted);
   font-size: 0.92rem;
-}
-
-
-  .pub-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.pub-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 14px;
-  border-radius: 6px;
-  background: var(--accent-deep);
-  color: #ffffff;
-  font-size: 0.88rem;
-  font-weight: 600;
-  line-height: 1;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.pub-badge:hover {
-  color: #ffffff;
-  text-decoration: none;
-  opacity: 0.85;
-}
-
-.pub-badge--paper {
-  background: var(--accent-deep);
-  color: #ffffff;
-}
-
-.pub-badge--new {
-  background: #e88c8c;
-  color: #ffffff;
-}
-
-.pub-badge--slides {
-  background: var(--accent);
-  color: #ffffff;
-}
-
-.pub-badge--award {
-  background: #c9b08a;
-  color: #ffffff;
 }
 
 @media (max-width: 720px) {
@@ -333,8 +356,14 @@ strong {
     padding: 38px 0 16px;
   }
 
+  .hero-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .nav-inner {
     gap: 12px;
+    justify-content: flex-start;
   }
 
   .timeline-item {
@@ -345,5 +374,4 @@ strong {
   h2 {
     font-size: 1.3rem;
   }
-  
 }
