@@ -1,0 +1,300 @@
+:root {
+  --bg: #ffffff;
+  --paper: #ffffff;
+  --text: #3e3e3e;
+  --muted: #6f7780;
+  --line: #d9d9d9;
+  --accent: #d1bfaf;
+  --accent-deep: #7f8da9;
+  --accent-soft: #eef2f7;
+  --beige: #f5f1ec;
+  --beige-deep: #d1bfaf;
+  --max-width: 920px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a {
+  color: var(--accent-deep);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #65748f;
+  text-decoration: underline;
+}
+
+.container {
+  width: min(var(--max-width), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 56px 0 24px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-inner {
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.15;
+  font-weight: 800;
+  color: var(--text);
+}
+
+h1 span {
+  color: inherit;
+  font-weight: inherit;
+}
+
+.lead {
+  margin: 14px 0 0;
+  max-width: 700px;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.hero-links {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.hero-links a {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent-deep);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 12px 0;
+}
+
+.nav-inner a {
+  color: var(--muted);
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.nav-inner a:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+main {
+  padding: 28px 0 56px;
+}
+
+.card {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 28px 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.card:first-of-type {
+  padding-top: 10px;
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-weight: 800;
+  color: var(--text);
+  position: relative;
+}
+
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--accent-deep);
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
+h3 {
+  margin: 4px 0 14px;
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 12px;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-list li {
+  margin: 0 0 8px;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.tag-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent-deep);
+}
+
+.timeline {
+  display: block;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.timeline-date {
+  color: var(--accent-deep);
+  font-weight: 700;
+}
+
+.timeline-content {
+  color: var(--text);
+}
+
+.pub-list {
+  display: block;
+}
+
+.pub-item {
+  padding: 10px 0 16px;
+  border: none;
+  border-bottom: 1px dashed var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.pub-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.pub-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pub-authors {
+  margin: 0 0 4px;
+  color: #5a5a5a;
+}
+
+.pub-meta {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.clean-list,
+.contact-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.clean-list li,
+.contact-list li {
+  margin-bottom: 8px;
+}
+
+.simple-list {
+  margin: 0;
+  padding: 0;
+}
+
+.simple-item {
+  padding: 10px 14px;
+  background: var(--beige);
+  border-left: 4px solid var(--accent-deep);
+  border-radius: 10px;
+}
+
+.footer {
+  padding: 22px 0 36px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 15px;
+  }
+
+  .hero {
+    padding: 38px 0 16px;
+  }
+
+  .nav-inner {
+    gap: 12px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
